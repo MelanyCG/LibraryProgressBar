@@ -1,0 +1,3 @@
+include ':progressBarLibrary'
+include ':app'
+rootProject.name = "LibraryProgressBar"
