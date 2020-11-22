@@ -42,6 +42,7 @@ dependencies {
 ```java
         myProgressBar = findViewById(R.id.myProgressBar);
         myProgressBar.setText(3,4);
+```
 
 ## Usage
 ![](example1.jpeg)
