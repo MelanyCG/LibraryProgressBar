@@ -44,5 +44,38 @@ dependencies {
         myProgressBar.setText(3,4);
 ```
 
-## Usage
+# Usage
 ![](example1.jpeg)
+
+## How to use - A progress bar that advanced until the end:
+1. Add this code to your xml layout activity: 
+```java
+    <com.example.progressbarlibrary.MyProgressBar
+        android:id="@+id/myProgressBar"
+        android:layout_width="218dp"
+        android:layout_height="251dp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        app:layout_constraintDimensionRatio="1:1" />
+```
+2. Add this code to your main:
+        myProgressBar = findViewById(R.id.myProgressBar);
+
+        // Random the colors of the arc progress bar and the text of the progress bar.
+        Random rnd = new Random();
+        int finishColor = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+        int unFinishColor = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+        int textColor = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+
+        myProgressBar.setText(1,10);
+        myProgressBar.setStrokeWidth(30);
+        myProgressBar.setTextSize(100);
+        myProgressBar.setTextColor(textColor);
+        myProgressBar.setUnfinishedStrokeColor(unFinishColor);
+        myProgressBar.setFinishedStrokeColor(finishColor);
+        myProgressBar.setBottomText("Example");
+        myProgressBar.setBottomTextSize(50);
+
+        mTimedHandler.sendEmptyMessageDelayed(0,5);
+```
