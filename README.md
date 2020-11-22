@@ -60,6 +60,8 @@ dependencies {
 ```
 2. Add this attribute:
 ```java
+    private Handler mTimedHandler = new Handler() {
+        @Override
         public void handleMessage(Message msg) {
             String text = myProgressBar.getText();
             String[] progress = text.split("/");
