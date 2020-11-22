@@ -88,7 +88,7 @@ dependencies {
         int unFinishColor = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
         int textColor = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
 
-        myProgressBar.setText(1,10);
+        myProgressBar.setText(0,10);
         myProgressBar.setStrokeWidth(30);
         myProgressBar.setTextSize(100);
         myProgressBar.setTextColor(textColor);
