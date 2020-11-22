@@ -79,3 +79,5 @@ dependencies {
 
         mTimedHandler.sendEmptyMessageDelayed(0,5);
 ```
+# Usage
+![](example2.jpeg)
