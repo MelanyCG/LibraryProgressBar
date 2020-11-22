@@ -60,6 +60,7 @@ dependencies {
         app:layout_constraintDimensionRatio="1:1" />
 ```
 2. Add this code to your main:
+```java
         myProgressBar = findViewById(R.id.myProgressBar);
 
         // Random the colors of the arc progress bar and the text of the progress bar.
@@ -79,5 +80,6 @@ dependencies {
 
         mTimedHandler.sendEmptyMessageDelayed(0,5);
 ```
+
 # Usage
 ![](example2.PNG)
