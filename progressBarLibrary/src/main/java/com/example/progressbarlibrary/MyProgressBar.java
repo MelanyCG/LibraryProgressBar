@@ -23,14 +23,13 @@ public class MyProgressBar extends View {
     private String bottomText, text, firstNumber, secondNumber;
     private int textColor, max, finishedStrokeColor, unfinishedStrokeColor;
 
-    private final int default_finished_color = Color.WHITE;
+    private final int default_finished_color = Color.RED;
     private final int default_unfinished_color = Color.rgb(72, 106, 176);
     private final int default_text_color = Color.rgb(66, 145, 241);
     private final float default_bottom_text_size, default_stroke_width;
     private final int default_max = 100;
     private final float default_arc_angle = 360 * 0.8f;
     private float default_text_size;
-    private final int min_size;
 
     // Restore and save data of the progressbar.
     private static final String INSTANCE_STATE = "saved_instance";
@@ -39,7 +38,8 @@ public class MyProgressBar extends View {
     private static final String INSTANCE_BOTTOM_TEXT = "bottom_text";
     private static final String INSTANCE_TEXT_SIZE = "text_size";
     private static final String INSTANCE_TEXT_COLOR = "text_color";
-    private static final String INSTANCE_PROGRESS = "progress";
+    //private static final String INSTANCE_PROGRESS = "progress";
+    private static final String INSTANCE_TEXT = "text";
     private static final String INSTANCE_MAX = "max";
     private static final String INSTANCE_FINISHED_STROKE_COLOR = "finished_stroke_color";
     private static final String INSTANCE_UNFINISHED_STROKE_COLOR = "unfinished_stroke_color";
@@ -61,7 +61,6 @@ public class MyProgressBar extends View {
         super(context, attrs, defStyleAttr);
 
         default_text_size = Utils.sp2px(getResources(), 30);
-        min_size = (int) Utils.dp2px(getResources(), 100);
         default_bottom_text_size = Utils.sp2px(getResources(), 10);
         default_stroke_width = Utils.dp2px(getResources(), 4);
 
@@ -82,7 +81,7 @@ public class MyProgressBar extends View {
         textColor = attributes.getColor(R.styleable.MyProgressBar_text_color, default_text_color);
         textSize = attributes.getDimension(R.styleable.MyProgressBar_text_size, default_text_size);
         arcAngle = attributes.getFloat(R.styleable.MyProgressBar_angle, default_arc_angle);
-        progress = attributes.getFloat(R.styleable.MyProgressBar_progress, 0);
+       // progress = attributes.getFloat(R.styleable.MyProgressBar_progress, 0);
         setMax(attributes.getInt(R.styleable.MyProgressBar_max, default_max));
         strokeWidth = attributes.getDimension(R.styleable.MyProgressBar_stroke_width, default_stroke_width);
         bottomTextSize = attributes.getDimension(R.styleable.MyProgressBar_bottom_text_size, default_bottom_text_size);
@@ -227,13 +226,8 @@ public class MyProgressBar extends View {
      * Get the text of progress bar.
      * @return the progress bar text.
      */
-    public int[] getText(){
-        int[] res = new int[2];
-        String[] result =  this.text.split("/");
-        for(int i=0; i<result.length; i++){
-            res[i] = Integer.parseInt(result[i]);
-        }
-        return res;
+    public String getText(){
+        return this.text;
     }
 
     /**
@@ -394,7 +388,6 @@ public class MyProgressBar extends View {
         bundle.putString(INSTANCE_BOTTOM_TEXT, getBottomText());
         bundle.putFloat(INSTANCE_TEXT_SIZE, getTextSize());
         bundle.putInt(INSTANCE_TEXT_COLOR, getTextColor());
-        bundle.putFloat(INSTANCE_PROGRESS, getProgress());
         bundle.putInt(INSTANCE_MAX, getMax());
         bundle.putInt(INSTANCE_FINISHED_STROKE_COLOR, getFinishedStrokeColor());
         bundle.putInt(INSTANCE_UNFINISHED_STROKE_COLOR, getUnfinishedStrokeColor());
@@ -412,7 +405,6 @@ public class MyProgressBar extends View {
             textSize = bundle.getFloat(INSTANCE_TEXT_SIZE);
             textColor = bundle.getInt(INSTANCE_TEXT_COLOR);
             setMax(bundle.getInt(INSTANCE_MAX));
-            //setProgress(bundle.getFloat(INSTANCE_PROGRESS));
             finishedStrokeColor = bundle.getInt(INSTANCE_FINISHED_STROKE_COLOR);
             unfinishedStrokeColor = bundle.getInt(INSTANCE_UNFINISHED_STROKE_COLOR);
             initPainters();

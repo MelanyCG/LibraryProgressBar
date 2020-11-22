@@ -14,9 +14,14 @@ public class MainActivity extends AppCompatActivity {
     private Handler mTimedHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            int[] progress = myProgressBar.getText();
-            progress[0] = progress[0] + 1;
-            myProgressBar.setText(progress[0], progress[1]);
+            String text = myProgressBar.getText();
+            String[] progress = text.split("/");
+
+            int firstNumber = Integer.parseInt(progress[0]);
+            int secondNumber = Integer.parseInt(progress[1]);
+            firstNumber = firstNumber + 1;
+
+            myProgressBar.setText(firstNumber, secondNumber);
             if(progress[0] == progress[1]) {
                 myProgressBar.setBottomText("Done!");
             }
